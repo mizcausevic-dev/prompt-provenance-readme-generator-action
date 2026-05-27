@@ -1,0 +1,40 @@
+name: "Prompt Provenance README Generator"
+description: "Renders a human-readable Markdown README from a prompt-provenance JSON document via prompt-provenance-readme-generator. Posts as PR comment, and/or writes to a target file path."
+author: "mizcausevic-dev"
+branding:
+  icon: "book-open"
+  color: "purple"
+
+inputs:
+  doc-path:
+    description: "Path (relative to repo root) to the prompt-provenance JSON document."
+    required: true
+  output-path:
+    description: "Optional file destination for the rendered Markdown."
+    required: false
+  comment-on-pr:
+    description: "Post the rendered Markdown as a PR comment. 'auto' (default) posts only on pull_request events."
+    required: false
+    default: "auto"
+  hide-badges:
+    description: "Suppress the trailing badges line under the title (default 'false')."
+    required: false
+    default: "false"
+  anchor-prefix:
+    description: "Anchor prefix for section headings (default 'section-')."
+    required: false
+    default: "section-"
+  github-token:
+    description: "Token used to post the PR comment (defaults to GITHUB_TOKEN)."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  markdown-length:
+    description: "Length (in characters) of the rendered Markdown."
+  output-written:
+    description: "True iff an output-path was specified and successfully written."
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
