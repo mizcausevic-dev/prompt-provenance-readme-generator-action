@@ -1,5 +1,5 @@
 name: "Prompt Provenance README Generator"
-description: "Renders a human-readable Markdown README from a prompt-provenance JSON document via prompt-provenance-readme-generator. Posts as PR comment, and/or writes to a target file path."
+description: "Render a Markdown README from a prompt-provenance JSON. Post as PR comment or commit to a target path."
 author: "mizcausevic-dev"
 branding:
   icon: "book-open"
